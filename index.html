@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volatility Trading Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom font and scrollbar styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1f2937; /* Dark Gray background */
+        }
+        /* Custom scrollbar for a better dark-mode experience */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        /* A subtle glow effect for buttons */
+        .glow-on-hover {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .glow-on-hover:hover:not(:disabled) {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); /* Red glow */
+        }
+    </style>
+</head>
+<body class="text-gray-300 p-4 flex items-center justify-center min-h-screen">
+
+    <!-- Login Page -->
+    <div id="login-page" class="w-full max-w-md bg-[#111827] border border-slate-700 rounded-2xl shadow-2xl shadow-red-500/10 overflow-hidden mx-auto">
+        <header class="p-6 border-b border-slate-700 text-center">
+            <h1 id="auth-title" class="text-2xl font-bold text-white">Admin Login</h1>
+            <p class="text-sm text-slate-400">Please sign in to continue</p>
+        </header>
+        <main class="p-6 space-y-6">
+            <form id="login-form">
+                <div class="space-y-4">
+                    <div>
+                        <label for="email" class="text-sm font-medium text-slate-400 mb-2 block">Email Address</label>
+                        <input type="email" id="email" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-red-500 transition" placeholder="you@example.com" required>
+                    </div>
+                    <div>
+                        <label for="password" class="text-sm font-medium text-slate-400 mb-2 block">Password</label>
+                        <input type="password" id="password" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-red-500 transition" placeholder="••••••••" required>
+                    </div>
+                </div>
+                 <p id="auth-error" class="text-red-400 text-sm mt-4 text-center h-5"></p>
+                <div class="pt-2">
+                    <button type="submit" id="auth-button" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2.5 px-6 rounded-lg transition duration-200">Login</button>
+                </div>
+            </form>
+            <div class="relative flex py-2 items-center">
+                <div class="flex-grow border-t border-slate-700"></div>
+                <span class="flex-shrink mx-4 text-slate-400 text-xs">OR</span>
+                <div class="flex-grow border-t border-slate-700"></div>
+            </div>
+            <div class="space-y-3">
+                 <!-- NOTE: Remember to replace the placeholder WhatsApp number below -->
+                 <a href="https://wa.me/+15015079440?text=Hello!%20I'm%20interested%20in%20your%20Volatility%20Trading%20Dashboard." target="_blank" class="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-6 rounded-lg transition duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M18.425 5.575a9.925 9.925 0 0 0-14.031 14.031l-1.325 4.846 4.95-1.305a9.925 9.925 0 0 0 14.031-14.031zM12 21.875c-1.68 0-3.279-.43-4.65-1.229l-5.051 1.332 1.357-4.95a9.88 9.88 0 0 1-1.256-4.993C2.399 6.556 6.74 2.125 12 2.125a9.75 9.75 0 0 1 9.75 9.75c0 5.37-4.38 9.75-9.75 9.75zm3.17-6.17c-.179-.09-1.052-.52-1.216-.578-.164-.058-.282-.09-.4.09-.118.179-.459.578-.564.696-.105.118-.21.132-.389.043s-1.052-.389-2-1.234a8.423 8.423 0 0 1-1.39-1.745c-.132-.239-.013-.369.078-.474.079-.09.179-.239.268-.358a1.01 1.01 0 0 0 .179-.299c.044-.118.022-.222-.022-.311s-.4-.959-.547-1.31c-.148-.351-.299-.303-.4-.303h-.372a.663.663 0 0 0-.472.222c-.179.179-.675.66-6.75 1.637s-1 1.912-1 1.956.675 2.247 1.551 3.294c.876 1.047 2.223 2.827 5.466 4.832l.024.012c.335.166.621.265.867.338.245.073.743.036 1.066-.14.359-.199 1.052-.765 1.2-1.052.148-.282.148-.52.105-.578s-.179-.09-.358-.179z"></path></svg>
+                    Enquire via WhatsApp
+                </a>
+                <!-- NOTE: Remember to replace the placeholder '#' with your actual PayPal URL -->
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BGEM4WVVL29BQ" class="w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-6 rounded-lg transition duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.743 6.955h6.142c1.46 0 2.223.774 2.107 2.158-.129 1.512-.903 2.28-2.318 2.28h-1.572l-2.43 6.329H3.321l3.242-8.541H5.117c-.89 0-1.488-.359-1.374-1.226zM15.15 6.955h2.954c2.476 0 4.144 1.25 3.65 3.568-.549 2.59-2.73 3.327-4.86 3.327h-1.743l-2.43 6.329H9.987l3.242-8.541h-1.03c-.89 0-1.488-.359-1.374-1.226.114-.867.712-1.227 1.602-1.227h2.723z"></path></svg>
+                    Buy Now - $75 USD
+                </a>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- Dashboard Page (Initially Hidden) -->
+    <div id="dashboard-page" class="hidden w-full max-w-4xl bg-[#111827] border border-slate-700 rounded-2xl shadow-2xl shadow-red-500/10 overflow-hidden mx-auto">
+        <!-- Header -->
+        <header class="p-6 border-b border-slate-700 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-white">Volatility Trading Dashboard</h1>
+                <p class="text-sm text-slate-400">Analyze real-time simulated market data</p>
+            </div>
+            <button id="logout-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">Logout</button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="p-6 space-y-6">
+            <!-- Controls -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                <div>
+                    <label for="volatility-select" class="text-sm font-medium text-slate-400 mb-2 block">Volatility Index</label>
+                    <select id="volatility-select" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-red-500 transition">
+                        <option>Volatility 10 (1s)</option>
+                        <option>Volatility 25 (1s)</option>
+                        <option>Volatility 50 (1s)</option>
+                        <option>Volatility 75 (1s)</option>
+                        <option>Volatility 100 (1s)</option>
+                        <option>Volatility 150 (1s)</option>
+                        <option>Volatility 250 (1s)</option>
+                        <option>Boom 300 Index</option>
+                        <option>Boom 500 Index</option>
+                        <option>Boom 1000 Index</option>
+                        <option>Crash 300 Index</option>
+                        <option>Crash 500 Index</option>
+                        <option>Crash 1000 Index</option>
+                        <option>Jump 10 Index</option>
+                        <option>Jump 25 Index</option>
+                        <option>Jump 50 Index</option>
+                        <option>Jump 75 Index</option>
+                        <option>Jump 100 Index</option>
+                        <option>Step Index</option>
+                        <option>Range Break 100 Index</option>
+                        <option>Range Break 200 Index</option>
+                    </select>
+                </div>
+                 <div>
+                    <label for="strategy-select" class="text-sm font-medium text-slate-400 mb-2 block">Trading Strategy</label>
+                    <select id="strategy-select" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-red-500 transition">
+                        <option>Even/Odd</option>
+                        <option>Rise/Fall</option>
+                        <option>Matches</option>
+                    </select>
+                </div>
+            </div>
+             <div class="flex space-x-2">
+                <button id="start-btn-main" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2.5 rounded-lg transition duration-200">Start</button>
+                <button id="stop-btn-main" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg transition duration-200 glow-on-hover" disabled>Stop</button>
+            </div>
+
+            <!-- Probability Distribution -->
+            <div>
+                <h2 class="text-lg font-bold text-white mb-3">Live Digit Probability Distribution</h2>
+                <div id="probability-grid" class="grid grid-cols-10 gap-2">
+                    <!-- Probability boxes will be generated here -->
+                </div>
+            </div>
+
+            <!-- Data Ticker -->
+            <div class="bg-slate-800/50 border-t border-b border-slate-700 py-3 px-6 grid grid-cols-6 gap-4 text-center">
+                <div><p class="text-xs text-slate-400 uppercase">Last Digit</p><p id="current-digit" class="text-lg font-bold text-yellow-400">-</p></div>
+                <div><p class="text-xs text-slate-400 uppercase">$ Live Price</p><p id="live-price" class="text-lg font-bold text-white">-</p></div>
+                <div><p class="text-xs text-slate-400 uppercase">Total Ticks</p><p id="total-ticks" class="text-lg font-bold text-white">0</p></div>
+                <div><p class="text-xs text-slate-400 uppercase">Strategy Outcome</p><p id="strategy-outcome" class="text-lg font-bold text-white">-</p></div>
+                <div><p class="text-xs text-slate-400 uppercase">Last Update</p><p id="last-update" class="text-lg font-bold text-white">--:--:--</p></div>
+                <div><p class="text-xs text-slate-400 uppercase">Status</p><div id="connection-status" class="flex items-center justify-center space-x-2 text-red-400 pt-1"><div class="w-2 h-2 bg-red-500 rounded-full"></div><span>Offline</span></div></div>
+            </div>
+            
+            <!-- AI Insight Section -->
+            <div class="pt-6 space-y-4">
+                <button id="analyze-btn" class="w-full md:w-auto bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2.5 px-6 rounded-lg transition duration-200 flex items-center justify-center space-x-2" disabled>
+                    <span id="analyze-btn-text">✨ Analyze Strategy</span>
+                </button>
+                <div id="insight-container" class="hidden bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                    <p id="insight-text" class="text-slate-300"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Elements ---
+            const loginPage = document.getElementById('login-page');
+            const dashboardPage = document.getElementById('dashboard-page');
+            const loginForm = document.getElementById('login-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const authError = document.getElementById('auth-error');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            const startBtnMain = document.getElementById('start-btn-main');
+            const stopBtnMain = document.getElementById('stop-btn-main');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            const analyzeBtnText = document.getElementById('analyze-btn-text');
+            const probabilityGrid = document.getElementById('probability-grid');
+            const currentDigitEl = document.getElementById('current-digit');
+            const livePriceEl = document.getElementById('live-price');
+            const totalTicksEl = document.getElementById('total-ticks');
+            const strategyOutcomeEl = document.getElementById('strategy-outcome');
+            const lastUpdateEl = document.getElementById('last-update');
+            const connectionStatusEl = document.getElementById('connection-status');
+            const insightContainer = document.getElementById('insight-container');
+            const insightText = document.getElementById('insight-text');
+            const strategySelect = document.getElementById('strategy-select');
+
+            // --- State ---
+            let probabilityInterval = null;
+            let tickerInterval = null;
+            let countdownInterval = null;
+            let probabilities = Array(10).fill(10.0);
+            let currentDigit = null;
+            let previousDigit = null;
+            let livePrice = 5971.29;
+            let history = [];
+            let isPaused = false;
+
+            // --- Admin Credentials ---
+            const ADMIN_EMAIL = "admin@admin.com";
+            const ADMIN_PASSWORD = "password"; // You can change this
+            
+             // --- Core Dashboard Functions (defined in a broader scope) ---
+
+             const stopSimulation = () => {
+                startBtnMain.disabled = false;
+                stopBtnMain.disabled = true;
+                analyzeBtn.disabled = true;
+                startBtnMain.textContent = 'Start';
+                analyzeBtnText.textContent = '✨ Analyze Strategy';
+                isPaused = false;
+                
+                clearInterval(countdownInterval); // Clear countdown if it's running
+                countdownInterval = null;
+
+                connectionStatusEl.innerHTML = `<div class="w-2 h-2 bg-red-500 rounded-full"></div><span>Offline</span>`;
+                connectionStatusEl.classList.replace('text-green-400', 'text-red-400');
+                connectionStatusEl.classList.remove('text-yellow-500');
+                
+                clearInterval(tickerInterval);
+                clearInterval(probabilityInterval);
+                tickerInterval = null;
+                probabilityInterval = null;
+                history = [];
+                currentDigit = null;
+                previousDigit = null;
+                currentDigitEl.textContent = '-';
+                strategyOutcomeEl.textContent = '-';
+            };
+
+            // --- Auth Functions ---
+            const handleLogin = (e) => {
+                e.preventDefault();
+                const email = emailInput.value;
+                const password = passwordInput.value;
+                authError.textContent = '';
+
+                if (email.toLowerCase() === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                    loginPage.classList.add('hidden');
+                    dashboardPage.classList.remove('hidden');
+                    initializeDashboard();
+                } else {
+                    authError.textContent = "Invalid credentials. Please try again.";
+                }
+            };
+
+            const handleLogout = () => {
+                 loginPage.classList.remove('hidden');
+                 dashboardPage.classList.add('hidden');
+                 stopSimulation(); // This call will now work correctly
+            };
+
+            loginForm.addEventListener('submit', handleLogin);
+            logoutBtn.addEventListener('click', handleLogout);
+
+
+            // --- Dashboard Logic (runs after login) ---
+            function initializeDashboard() {
+                // --- Dashboard Initial Setup ---
+                const initializeGrid = () => {
+                    probabilityGrid.innerHTML = '';
+                    for (let i = 0; i < 10; i++) {
+                        probabilityGrid.innerHTML += `
+                            <div class="bg-slate-800 border border-slate-700 rounded-lg py-2 px-1 text-center transition-all duration-300">
+                                <p class="font-bold text-xl text-white">${i}</p>
+                                <p id="prob-${i}" class="text-xs text-yellow-400">${probabilities[i].toFixed(1)}%</p>
+                            </div>
+                        `;
+                    }
+                };
+
+                const updateProbabilities = () => {
+                    probabilities = probabilities.map(p => Math.max(5, Math.min(15, p + (Math.random() - 0.5) * 0.4)));
+                    const sum = probabilities.reduce((a, b) => a + b, 0);
+                    probabilities = probabilities.map(p => (p / sum) * 100);
+                    for (let i = 0; i < 10; i++) {
+                        const el = document.getElementById(`prob-${i}`);
+                        if (el) el.textContent = `${probabilities[i].toFixed(1)}%`;
+                    }
+                };
+
+                const updateTicker = () => {
+                    previousDigit = currentDigit;
+                    currentDigit = Math.floor(Math.random() * 10);
+                    
+                    history.push(currentDigit);
+                    livePrice += (Math.random() - 0.5) * 5;
+
+                    currentDigitEl.textContent = currentDigit;
+                    totalTicksEl.textContent = history.length;
+                    
+                    const activeStrategy = strategySelect.value;
+                    let outcome = '-';
+                    if (activeStrategy === 'Even/Odd') {
+                        outcome = currentDigit % 2 === 0 ? 'Even' : 'Odd';
+                    } else if (activeStrategy === 'Rise/Fall') {
+                         if (previousDigit !== null) {
+                            if (currentDigit > previousDigit) outcome = 'Rise';
+                            else if (currentDigit < previousDigit) outcome = 'Fall';
+                            else outcome = 'Equal';
+                        }
+                    } else if (activeStrategy === 'Matches') {
+                        if (previousDigit !== null && currentDigit === previousDigit) {
+                            outcome = 'Match';
+                        }
+                    }
+                    strategyOutcomeEl.textContent = outcome;
+
+                    livePriceEl.textContent = livePrice.toFixed(4);
+                    lastUpdateEl.textContent = new Date().toLocaleTimeString();
+
+                    Array.from(probabilityGrid.children).forEach((box, i) => {
+                        box.classList.toggle('bg-red-600', i === currentDigit);
+                        box.classList.toggle('border-red-400', i === currentDigit);
+                        box.style.transform = i === currentDigit ? 'scale(1.05)' : 'scale(1)';
+                    });
+                };
+                
+                const startSimulation = () => {
+                    const activeStrategy = strategySelect.value;
+                    startBtnMain.disabled = true;
+                    stopBtnMain.disabled = false;
+                    analyzeBtn.disabled = false;
+                    insightContainer.classList.add('hidden');
+                    
+                    if (!isPaused) { 
+                        history = [];
+                        previousDigit = null;
+                    }
+                    isPaused = false;
+                    startBtnMain.textContent = 'Start';
+
+                    connectionStatusEl.innerHTML = `<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div><span>Live</span>`;
+                    connectionStatusEl.classList.replace('text-red-400', 'text-yellow-500');
+                    connectionStatusEl.classList.add('text-green-400');
+
+                    updateTicker();
+                    updateProbabilities();
+                    
+                    if (activeStrategy === 'Matches') {
+                        clearInterval(tickerInterval);
+                        clearInterval(probabilityInterval);
+                        tickerInterval = null;
+                        probabilityInterval = null;
+                        isPaused = true;
+                        startBtnMain.disabled = false;
+                        startBtnMain.textContent = 'Next';
+                        stopBtnMain.disabled = false;
+                        analyzeBtn.disabled = false;
+                    } else {
+                        tickerInterval = setInterval(updateTicker, 2000);
+                        probabilityInterval = setInterval(updateProbabilities, 2000);
+                    }
+                };
+                
+                async function getTradingInsight() {
+                    clearInterval(tickerInterval);
+                    clearInterval(probabilityInterval);
+                    analyzeBtn.disabled = true;
+                    insightContainer.classList.remove('hidden');
+                    analyzeBtnText.textContent = 'Generating...';
+                    insightText.innerHTML = `<div class="flex items-center justify-center">✨ Generating AI analysis...</div>`;
+                    
+                    const apiKey = "AIzaSyAk6gmVG0QiEhOhG35eymQGdBgAy-pOQe8";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                    
+                    const strategy = strategySelect.value;
+                    const lastDigit = currentDigit;
+
+                    const systemPrompt = "You are a professional trading analyst. Provide a concise, fictional trading insight based on the provided volatility index, strategy, and last market digit. Do not give real financial advice. Your tone should be confident and analytical. Start the analysis directly without preamble.";
+                    const userQuery = `Generate a fictional trading insight for the following scenario: Volatility Index: '${document.getElementById('volatility-select').value}', Trading Strategy: '${strategy}', Last Digit: ${lastDigit}, Total Ticks in Session: ${history.length}.`;
+
+                    const payload = {
+                        contents: [{ parts: [{ text: userQuery }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] },
+                    };
+
+                    try {
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        
+                        if (!response.ok) { throw new Error(`API Error: ${response.status}`); }
+
+                        const result = await response.json();
+                        const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                        if (text) {
+                            insightContainer.classList.remove('hidden');
+                            insightText.textContent = `Analysis for ${strategy} on Last Digit ${lastDigit}: ${text}`;
+                        } else {
+                            throw new Error("No valid content received from API.");
+                        }
+                    } catch (error) {
+                        console.error("Gemini API call failed:", error);
+                        insightContainer.classList.remove('hidden');
+                        insightText.textContent = "Could not retrieve AI analysis. " + error.message;
+                    } finally {
+                        // Start cooldown timer AFTER the API call is complete
+                        let countdown = 10;
+                        analyzeBtnText.textContent = `Next prediction in ${countdown}...`;
+                        countdownInterval = setInterval(() => {
+                            countdown--;
+                            if (countdown > 0) {
+                                analyzeBtnText.textContent = `Next prediction in ${countdown}...`;
+                            } else {
+                                clearInterval(countdownInterval);
+                                countdownInterval = null;
+                                analyzeBtn.disabled = false;
+                                analyzeBtnText.textContent = '✨ Analyze Strategy';
+                            }
+                        }, 1000);
+                    }
+                }
+                
+                // --- Event Listeners ---
+                startBtnMain.addEventListener('click', startSimulation);
+                stopBtnMain.addEventListener('click', stopSimulation);
+                analyzeBtn.addEventListener('click', getTradingInsight);
+                
+                initializeGrid();
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
+
